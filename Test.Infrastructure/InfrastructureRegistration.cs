@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,20 @@ namespace Test.Infrastructure
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            Services.AddScoped(typeof(IGenericRepo‎<>), typeof(GenericRepo<>));
+
             // Register Unitofwork service
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
             Services.AddSingleton<IImageManagementService, ImageManagementService>();
             Services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
-
+            // apply redis cache
+            Services.AddSingleton<IConnectionMultiplexer>(i =>
+            {
+                var config = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"));
+                return ConnectionMultiplexer.Connect(config);
+            });
 
 
             return Services;
