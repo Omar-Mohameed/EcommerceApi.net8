@@ -22,7 +22,7 @@ namespace Test.Infrastructure.Repositores
             this.context = context;
         }
 
-        public async Task<ErrorOr<Category>> AddAsync(Category category)
+        public async Task<ErrorOr<Category>> AddCategoryAsync(Category category)
         {
             // Validation
             if (string.IsNullOrWhiteSpace(category.Name) ||
@@ -46,6 +46,25 @@ namespace Test.Infrastructure.Repositores
             return await context.Categories
             .AsNoTracking()
             .AnyAsync(c => c.Name.ToLower() == name.Trim().ToLower());
+        }
+
+        public async Task<ErrorOr<Category>> UpdateCategoryAsync(Category category)
+        {
+
+            // Validation
+            if (string.IsNullOrWhiteSpace(category.Name) ||
+                category.Name.Length < 3 ||
+                category.Name.Length > 50)
+            {
+                return CategoryErrors.InvalidName;
+            }
+            // check if DuplicateName category
+            if (await DuplicateName(category.Name))
+            {
+                return CategoryErrors.DuplicateName(category.Name);
+            }
+            //context.Categories.Update(category);
+            return category;
         }
     }
 }

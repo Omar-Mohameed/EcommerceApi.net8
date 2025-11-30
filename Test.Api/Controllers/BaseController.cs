@@ -9,13 +9,13 @@ namespace Test.Api.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
-        protected readonly IUnitOfWork _unitOfWork;
-        protected readonly IMapper _mapper;
+        protected readonly IUnitOfWork work;
+        protected readonly IMapper mapper;
 
-        public BaseController(IUnitOfWork unitOfWork, IMapper mapper)
+        public BaseController(IUnitOfWork work, IMapper mapper)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+            this.work = work;
+            this.mapper = mapper;
         }
     }
 }

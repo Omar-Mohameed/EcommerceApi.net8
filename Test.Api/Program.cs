@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using Test.Api.Middlewares;
 using Test.Core.Interfaces;
+using Test.Infrastructure;
 using Test.Infrastructure.Data;
 using Test.Infrastructure.Repositores;
 
@@ -12,14 +14,9 @@ namespace Test.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+            builder.Services.infrastructureConfiguration(builder.Configuration);
+            builder.Services.AddMemoryCache();
 
-            // Register Unitofwork service
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Register IMapper service with correct configuration
             builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(Program).Assembly));
@@ -37,10 +34,13 @@ namespace Test.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseMiddleware<ExceptionsMiddleware>();
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.UseStaticFiles();
 
             app.MapControllers();
 

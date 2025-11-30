@@ -9,6 +9,7 @@ namespace Test.Core.Interfaces
     public interface IUnitOfWork
     {
         ICategoryRepo Categories { get; }
+        IProductRepo Products { get; }
         Task<int> SaveChangesAsync();
     }
 }

@@ -11,7 +11,8 @@ namespace Test.Core.Interfaces
 {
     public interface ICategoryRepo : IGenericRepo<Category>
     {
-        Task<ErrorOr<Category>> AddAsync(Category category);
+        Task<ErrorOr<Category>> AddCategoryAsync(Category category);
+        Task<ErrorOr<Category>> UpdateCategoryAsync(Category category);
         // check if category name is DuplicateName
         Task<bool> DuplicateName(string name);
     }

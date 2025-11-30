@@ -32,7 +32,7 @@ namespace Test.Api.Controllers
             category =>
             {
                 // Success → map to DTO لو حابب
-                var dto = _mapper.Map<CategoryDTO>(category);
+                var dto = mapper.Map<CategoryDTO>(category);
                 return Ok(new ResponseApi(200, "Category fetched successfully", dto));
             },
             errors =>
@@ -51,7 +51,7 @@ namespace Test.Api.Controllers
         public async Task<IActionResult> AddCategory(CreateCategoryDTO categoryDto)
         {
             var cat = mapper.Map<Category>(categoryDto);
-            var result = await work.Categories.AddAsync(cat);
+            var result = await work.Categories.AddCategoryAsync(cat);
 
             if (result.IsError)
             {
@@ -82,28 +82,22 @@ namespace Test.Api.Controllers
                     detail: firstError.Description
                     );
             }
-            var category = result.Value;
-            // check DuplicateCategoryName
-            if(await work.Categories.DuplicateName(createCategoryDTO.Name))
-            {
-                return Problem(
-                    statusCode: 409,
-                    title: "Category.DuplicateName",
-                    detail: $"Category with name '{category.Name}' already exists."
-                );
-            }
-            category.Name = createCategoryDTO.Name;
-            category.Description = createCategoryDTO.Description;
-
-            var updatedResult = await work.Categories.UpdateAsync(result.Value);
-            if (updatedResult.IsError)
+            var categoryInDb = result.Value;
+            var category = mapper.Map<Category>(createCategoryDTO);
+            var catResult = await work.Categories.UpdateCategoryAsync(category);
+           
+            if (catResult.IsError)
             {
                 return Problem(
                     statusCode: 400,
-                    title: updatedResult.FirstError.Code,
-                    detail: updatedResult.FirstError.Description
+                    title: catResult.FirstError.Code,
+                    detail: catResult.FirstError.Description
                     );
             }
+
+            categoryInDb.Name = catResult.Value.Name;
+            categoryInDb.Description = catResult.Value.Description;
+
             await work.SaveChangesAsync();
 
             var updatedCategory = mapper.Map<CategoryDTO>(result.Value);
@@ -112,7 +106,7 @@ namespace Test.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var result = await work.Categories.GetByIdAsync(id);
+            var result = await work.Categories.DeleteAsync(id);
             if (result.IsError)
             {
                 return Problem(
@@ -120,15 +114,6 @@ namespace Test.Api.Controllers
                     title: result.FirstError.Code,
                     detail: result.FirstError.Description
                     );
-            }
-            var deletedResult = await work.Categories.DeleteAsync(id);
-            if (deletedResult.IsError)
-            {
-                return Problem(
-                   statusCode: 400,
-                   title: deletedResult.FirstError.Code,
-                   detail: deletedResult.FirstError.Description
-                   );
             }
             await work.SaveChangesAsync();
             return Ok(new ResponseApi(200, "Category deleted successfuly"));
