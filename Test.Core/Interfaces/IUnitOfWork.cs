@@ -11,6 +11,7 @@ namespace Test.Core.Interfaces
         ICategoryRepo Categories { get; }
         IProductRepo Products { get; }
         ICustomerBasketRepo Baskets { get; }
+        IAuth Auth { get; }
         Task<int> SaveChangesAsync();
     }
 }
