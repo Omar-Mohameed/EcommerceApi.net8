@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Test.Core.Entities;
+using Test.Core.Entities.Order;
 using Test.Core.Entities.Product;
 
 namespace Test.Infrastructure.Data
@@ -17,6 +18,9 @@ namespace Test.Infrastructure.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
         override protected void OnModelCreating(ModelBuilder builder)
         {

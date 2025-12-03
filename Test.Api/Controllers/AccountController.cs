@@ -38,7 +38,7 @@ namespace Test.Api.Controllers
                 {
                     HttpOnly = true,
                     Secure = true,
-                    SameSite = SameSiteMode.None,
+                    SameSite = SameSiteMode.Strict,
                     IsEssential = true,
                     Domain = "localhost",
                     Expires = DateTime.Now.AddDays(1)

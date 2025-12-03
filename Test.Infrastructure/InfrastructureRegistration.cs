@@ -51,6 +51,10 @@ namespace Test.Infrastructure
                 return ConnectionMultiplexer.Connect(config);
             });
 
+            //register IOrder Service
+            Services.AddScoped<IOrderService, OrderService>();
+
+
             Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             Services.AddAuthentication(x =>
