@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Test.Core.DTOS.AuthDTOS;
 using Test.Core.Entities;
 using Test.Core.Interfaces;
 using Test.Core.Services;
 using Test.Core.Shared;
-using Test.Infrastructure.Repositores.Services;
+using Test.Infrastructure.Data;
 
 namespace Test.Infrastructure.Repositores
 {
@@ -26,15 +21,17 @@ namespace Test.Infrastructure.Repositores
 
         private readonly IConfiguration _configuration;
         private readonly IGenerateTokenService generateTokenService;
+        private readonly AppDbContext _context;
 
 
-        public AuthRepo(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService, IConfiguration configuration, IGenerateTokenService generateTokenService)
+        public AuthRepo(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService, IConfiguration configuration, IGenerateTokenService generateTokenService, AppDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
             _configuration = configuration;
             this.generateTokenService = generateTokenService;
+            _context = context;
         }
 
 
@@ -42,10 +39,10 @@ namespace Test.Infrastructure.Repositores
         {
             if (registorDto == null) return null;
             // check username istoken
-            if(await _userManager.FindByNameAsync(registorDto.UserName) != null)
+            if (await _userManager.FindByNameAsync(registorDto.UserName) != null)
                 return "Username is already taken";
             // check email is token
-            if(await _userManager.FindByEmailAsync(registorDto.Email) != null)
+            if (await _userManager.FindByEmailAsync(registorDto.Email) != null)
                 return "Email is already registered";
 
             var user = new AppUser
@@ -54,7 +51,7 @@ namespace Test.Infrastructure.Repositores
                 Email = registorDto.Email,
                 DisplayName = registorDto.DisplayName
             };
-            var result = await _userManager.CreateAsync(user,registorDto.Password); // // store in db with hashed password but (not allowed to login if email is not confirmed)
+            var result = await _userManager.CreateAsync(user, registorDto.Password); // // store in db with hashed password but (not allowed to login if email is not confirmed)
             if (!result.Succeeded)
                 return result.Errors.ToList()[0].Description;
 
@@ -88,7 +85,7 @@ namespace Test.Infrastructure.Repositores
             if (FindUser == null)
                 return "Invalid Email or Password";
             // Check if email is confirmed(not allowed to login if email is not confirmed)
-            if(!FindUser.EmailConfirmed)
+            if (!FindUser.EmailConfirmed)
             {
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(FindUser);
                 await SendEmail(FindUser.Email, token, "confirmemail",
@@ -117,7 +114,7 @@ namespace Test.Infrastructure.Repositores
             if (user == null)
                 return false;
 
-           // Decode token
+            // Decode token
             var decodedToken = Uri.UnescapeDataString(accountDTO.Token);
 
             var result = await _userManager.ConfirmEmailAsync(user, decodedToken);
@@ -164,6 +161,42 @@ namespace Test.Infrastructure.Repositores
             if (result.Succeeded)
                 return "done";
             return result.Errors.ToList()[0].Description;
+        }
+
+        // Address
+        public async Task<Address> getUserAddress(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            var address = await _context.Addresses.FirstOrDefaultAsync(a => a.AppUserId == user.Id);
+            return address;
+        }
+
+        public async Task<bool> UpdateAddress(string email, Address address)
+        {
+            // Get user
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return false;
+
+            // Get existing address
+            var existingAddress = await _context.Addresses
+                                                .FirstOrDefaultAsync(a => a.AppUserId == user.Id);
+
+            if (existingAddress is null)
+            {
+                // Create new address
+                address.AppUserId = user.Id;
+                await _context.Addresses.AddAsync(address);
+            }
+            else
+            {
+                _context.Entry(existingAddress).State = EntityState.Detached; // Stop Tracking this entity(existingaddress) 
+                address.Id = existingAddress.Id;
+                address.AppUserId = existingAddress.AppUserId;
+                _context.Addresses.Update(address);
+            }
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

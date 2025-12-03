@@ -55,7 +55,7 @@ namespace Test.Infrastructure.Repositores
             Categories = new CategoryRepo(_context);
             Products = new ProductRepo(_context, _mapper, _imageManagementService);
             Baskets = new CustomerBasketRepo(_redis);
-            Auth = new AuthRepo(_userManager, _signInManager, _emailService, _configuration,_generateTokenService);
+            Auth = new AuthRepo(_userManager, _signInManager, _emailService, _configuration,_generateTokenService,_context);
         }
 
 

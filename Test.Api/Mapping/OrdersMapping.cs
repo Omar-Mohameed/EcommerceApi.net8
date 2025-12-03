@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Test.Core.DTOS.Orders;
+using Test.Core.Entities;
 using Test.Core.Entities.Order;
 
 namespace Test.Api.Mapping
@@ -15,6 +16,8 @@ namespace Test.Api.Mapping
             CreateMap<OrderItem, OrderItemDto>().ReverseMap();
 
             CreateMap<ShippingAddress, ShipAddressDTO>().ReverseMap();
+
+            CreateMap<Address,ShipAddressDTO>().ReverseMap();
 
         }
     }

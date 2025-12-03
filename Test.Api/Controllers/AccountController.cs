@@ -5,9 +5,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Security.Claims;
 using System.Text;
 using Test.Api.Helper;
 using Test.Core.DTOS.AuthDTOS;
+using Test.Core.DTOS.Orders;
+using Test.Core.Entities;
 using Test.Core.Interfaces;
 
 namespace Test.Api.Controllers
@@ -48,6 +51,8 @@ namespace Test.Api.Controllers
             }
             return BadRequest(new ResponseApi(400, result));
         }
+        
+        [Authorize]
         [HttpPost("logout")]
         public IActionResult Logout()
         {
@@ -80,5 +85,27 @@ namespace Test.Api.Controllers
             return User.Identity.IsAuthenticated ? Ok(new ResponseApi(200,"Authorized User")) : BadRequest();
         }
 
+        // update address
+        [Authorize]
+        [HttpPut("update-address")]
+        public async Task<IActionResult> UpdateAddress(ShipAddressDTO shipAddressDTO)
+        {
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            var address = mapper.Map<Address>(shipAddressDTO);
+
+            var res = await work.Auth.UpdateAddress(Email, address);
+            return res ? Ok(new ResponseApi(200, "Address updated successfully.")) : BadRequest();
+        }
+        [Authorize]
+        [HttpGet("get-address-user")]
+        public async Task<IActionResult> getAddress()
+        {
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            var address = await work.Auth.getUserAddress(Email);
+            if (address is null)
+                return BadRequest(new ResponseApi(404, "Address not found!"));
+            var result = mapper.Map<ShipAddressDTO>(address);
+            return Ok(result);
+        }
     }
 }
