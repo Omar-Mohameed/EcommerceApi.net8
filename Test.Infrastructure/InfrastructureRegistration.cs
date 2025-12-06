@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using Test.Core.Entities;
 using Test.Core.Interfaces;
 using Test.Core.Services;
+using Test.Core.Shared;
 using Test.Infrastructure.Data;
 using Test.Infrastructure.Repositores;
 using Test.Infrastructure.Repositores.Services;
@@ -43,6 +44,12 @@ namespace Test.Infrastructure
             Services.AddScoped<IEmailService, EmailService>();
             //register token
             Services.AddScoped<IGenerateTokenService, GenerateTokenService>();
+
+            // payment service
+            Services.AddScoped<IPaymentService, PaymentService>();
+
+            // stripe service
+            Services.Configure<StripeSettings>(Configuration.GetSection("StripSetting"));
 
             // apply redis cache
             Services.AddSingleton<IConnectionMultiplexer>(i =>

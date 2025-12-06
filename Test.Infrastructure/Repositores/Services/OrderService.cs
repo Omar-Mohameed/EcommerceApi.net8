@@ -19,18 +19,26 @@ namespace Test.Infrastructure.Repositores.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IPaymentService _paymentService;
 
-        public OrderService(IUnitOfWork unitOfWork, AppDbContext appDbContext, IMapper mapper)
+        public OrderService(IUnitOfWork unitOfWork, AppDbContext appDbContext, IMapper mapper, IPaymentService paymentService)
         {
             _unitOfWork = unitOfWork;
             _context = appDbContext;
             _mapper = mapper;
+            _paymentService = paymentService;
         }
 
         public async Task<ErrorOr<Orders>> CreateOrdersAsync(OrderDTO orderDTO, string BuyerEmail)
         {
             // Get basket from redis
             var basket = await _unitOfWork.Baskets.GetBasketAsync(orderDTO.basketId);
+            if (basket == null)
+                return Error.NotFound("basket not found","basket not found");
+            // check delivary method id 
+            var delivarymethodid = await _context.DeliveryMethods.FindAsync(orderDTO.deliveryMethodId);
+            if(delivarymethodid == null)
+                return Error.NotFound("deliveryMethodId not found", "deliveryMethodId not found");
             List<OrderItem> OrderItems = new List<OrderItem>();
             foreach (var item in basket.basketItems)
             {
@@ -54,7 +62,16 @@ namespace Test.Infrastructure.Repositores.Services
 
             var ship = _mapper.Map<ShippingAddress>(orderDTO.shipAddress);
 
-            var Order = new Orders(BuyerEmail, subTotal, OrderItems,ship, deliverMethod);
+            var ExistingOrder = await _context.Orders
+                .FirstOrDefaultAsync(o => o.PaymentIntentId == basket.PaymentIntentId);
+            if (ExistingOrder != null)
+            {
+                _context.Orders.Remove(ExistingOrder);
+                await _paymentService.CreateOrUpdatePaymentAsync(orderDTO.basketId, orderDTO.deliveryMethodId);
+            }
+
+            var Order = new Orders(
+                BuyerEmail, subTotal, OrderItems,ship, deliverMethod,basket.PaymentIntentId);
 
             await _context.Orders.AddAsync(Order);
             await _unitOfWork.SaveChangesAsync();

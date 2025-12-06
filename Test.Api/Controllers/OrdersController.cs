@@ -19,7 +19,7 @@ namespace Test.Api.Controllers
         private readonly IOrderService _orderService = orderService;
 
         [HttpPost]
-        public async Task<IActionResult> GetOrders(OrderDTO orderDTO)
+        public async Task<IActionResult> CreateOrder(OrderDTO orderDTO)
         {
             var Email = User.FindFirst(ClaimTypes.Email).Value;
             var result = await _orderService.CreateOrdersAsync(orderDTO,Email);

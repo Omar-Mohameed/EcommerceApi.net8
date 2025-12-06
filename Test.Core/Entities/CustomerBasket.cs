@@ -13,8 +13,10 @@ namespace Test.Core.Entities
         {
             Id = id;
         }
-
+        
         public string Id { get; set; }  // typically the user's ID (key in redis)
+        public string? PaymentIntentId { get; set; }
+        public string? ClientSecret { get; set; }
         public List<BasketItem> basketItems { get; set; } = new List<BasketItem>(); // list of items in the basket (value in redis)
     }
 }

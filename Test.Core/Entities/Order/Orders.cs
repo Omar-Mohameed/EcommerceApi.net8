@@ -10,13 +10,15 @@ namespace Test.Core.Entities.Order
     {
         public Orders() { }
 
-        public Orders(string buyerEmail, decimal subTotal, List<OrderItem> orderItems, ShippingAddress shippingAddress, DeliveryMethod deliveryMethod)
+        public Orders(string buyerEmail, decimal subTotal, List<OrderItem> orderItems,
+            ShippingAddress shippingAddress, DeliveryMethod deliveryMethod,string paymentIntentId)
         {
             BuyerEmail = buyerEmail;
             SubTotal = subTotal;
             OrderItems = orderItems;
             ShippingAddress = shippingAddress;
             DeliveryMethod = deliveryMethod;
+            PaymentIntentId = paymentIntentId;
         }
 
         public string BuyerEmail { get; set; }
@@ -25,6 +27,8 @@ namespace Test.Core.Entities.Order
         public List<OrderItem> OrderItems { get; set; } = new();
         public ShippingAddress ShippingAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set;}
+        public string PaymentIntentId { get; set; }
+
 
         public Status Status { get; set; } = Status.Pending;
 

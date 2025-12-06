@@ -30,7 +30,7 @@ namespace Test.Infrastructure.Repositores
         public async Task<CustomerBasket?> UpdateBasketAsync(CustomerBasket basket)
         {
             var created = await _database.StringSetAsync(basket.Id,
-                JsonSerializer.Serialize(basket), TimeSpan.FromDays(3)); // تخزين قيمة الـ key في الريديز
+                JsonSerializer.Serialize(basket), TimeSpan.FromDays(7)); // تخزين قيمة الـ key في الريديز
             if (created)
             {
                 return await GetBasketAsync(basket.Id);
