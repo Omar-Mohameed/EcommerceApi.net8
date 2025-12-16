@@ -1,12 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
-using Test.Api.Middlewares;
-using Test.Core.Interfaces;
-using Test.Infrastructure;
-using Test.Infrastructure.Data;
-using Test.Infrastructure.Repositores;
+using Ecom.Api.Middlewares;
+using Ecom.Core.Interfaces;
+using Ecom.Infrastructure;
 
-namespace Test.Api
+namespace Ecom.Api
 {
     public class Program
     {

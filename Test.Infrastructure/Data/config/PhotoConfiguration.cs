@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Entities.Product;
+using Ecom.Core.Entities.Product;
 
-namespace Test.Infrastructure.Data.config
+namespace Ecom.Infrastructure.Data.config
 {
     public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
     {

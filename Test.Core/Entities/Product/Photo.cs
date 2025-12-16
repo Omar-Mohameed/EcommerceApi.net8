@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.Entities.Product
+namespace Ecom.Core.Entities.Product
 {
     public class Photo : BaseEntity<int>
     {

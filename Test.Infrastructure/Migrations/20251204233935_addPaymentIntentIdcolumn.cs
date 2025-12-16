@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Test.Infrastructure.Migrations
+namespace Ecom.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class addPaymentIntentIdcolumn : Migration

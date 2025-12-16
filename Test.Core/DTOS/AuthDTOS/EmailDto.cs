@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.DTOS.AuthDTOS
+namespace Ecom.Core.DTOS.AuthDTOS
 {
     public class EmailDto
     {

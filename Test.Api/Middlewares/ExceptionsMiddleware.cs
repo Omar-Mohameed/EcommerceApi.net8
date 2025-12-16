@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Caching.Memory;
 using System.Net;
 using System.Text.Json;
-using Test.Api.Helper;
+using Ecom.Api.Helper;
 
-namespace Test.Api.Middlewares
+namespace Ecom.Api.Middlewares
 {
     public class ExceptionsMiddleware
     {

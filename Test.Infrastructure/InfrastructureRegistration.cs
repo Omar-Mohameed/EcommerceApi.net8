@@ -14,15 +14,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Entities;
-using Test.Core.Interfaces;
-using Test.Core.Services;
-using Test.Core.Shared;
-using Test.Infrastructure.Data;
-using Test.Infrastructure.Repositores;
-using Test.Infrastructure.Repositores.Services;
+using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
+using Ecom.Core.Services;
+using Ecom.Core.Shared;
+using Ecom.Infrastructure.Data;
+using Ecom.Infrastructure.Repositores;
+using Ecom.Infrastructure.Repositores.Services;
 
-namespace Test.Infrastructure
+namespace Ecom.Infrastructure
 {
     public static class InfrastructureRegistration
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Entities;
+using Ecom.Core.Entities;
 
-namespace Test.Core.Services
+namespace Ecom.Core.Services
 {
     public interface IGenerateTokenService
     {

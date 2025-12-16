@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Test.Api.Helper;
-using Test.Core.Entities;
-using Test.Core.Interfaces;
+using Ecom.Api.Helper;
+using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
 
-namespace Test.Api.Controllers
+namespace Ecom.Api.Controllers
 {
     public class BasketsController : BaseController
     {

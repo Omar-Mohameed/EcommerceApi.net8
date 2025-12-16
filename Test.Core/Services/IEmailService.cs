@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.DTOS.AuthDTOS;
+using Ecom.Core.DTOS.AuthDTOS;
 
-namespace Test.Core.Services
+namespace Ecom.Core.Services
 {
     public interface IEmailService
     {

@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.DTOS.Orders;
-using Test.Core.Entities.Order;
+using Ecom.Core.DTOS.Orders;
+using Ecom.Core.Entities.Order;
 
-namespace Test.Core.Services
+namespace Ecom.Core.Services
 {
     public interface IOrderService
     {
-        Task<ErrorOr<Orders>> CreateOrdersAsync(OrderDTO orderDTO, string BuyerEmail);
+        Task<ErrorOr<Orders>> CreateOrdersAsync(OrderDto orderDTO, string BuyerEmail);
         Task<IReadOnlyList<OrderReturnDto>> GetAllOrdersForUserAsync(string BuyerEmail);
         Task<OrderReturnDto> GetOrderByIdAsync(int Id, string BuyerEmail);
         Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodAsync();

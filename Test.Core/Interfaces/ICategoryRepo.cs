@@ -5,9 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Entities.Product;
+using Ecom.Core.Entities.Product;
 
-namespace Test.Core.Interfaces
+namespace Ecom.Core.Interfaces
 {
     public interface ICategoryRepo : IGenericRepo<Category>
     {

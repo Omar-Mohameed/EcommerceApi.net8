@@ -1,7 +1,7 @@
 ﻿
 using System.Text.Json.Serialization;
 
-namespace Test.Api.Helper
+namespace Ecom.Api.Helper
 {
     public class ResponseApi // Wrapper Response
     {

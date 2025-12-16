@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.Entities.Order
+namespace Ecom.Core.Entities.Order
 {
     public class DeliveryMethod: BaseEntity<int>
     {

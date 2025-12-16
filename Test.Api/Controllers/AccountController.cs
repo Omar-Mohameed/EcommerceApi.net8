@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Security.Claims;
 using System.Text;
-using Test.Api.Helper;
-using Test.Core.DTOS.AuthDTOS;
-using Test.Core.DTOS.Orders;
-using Test.Core.Entities;
-using Test.Core.Interfaces;
+using Ecom.Api.Helper;
+using Ecom.Core.DTOS.AuthDTOS;
+using Ecom.Core.DTOS.Orders;
+using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
 
-namespace Test.Api.Controllers
+namespace Ecom.Api.Controllers
 {
     public class AccountController : BaseController
     {

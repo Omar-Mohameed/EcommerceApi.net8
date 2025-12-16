@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.DTOS.Orders;
-using Test.Core.Entities.Order;
-using Test.Core.Interfaces;
-using Test.Core.Services;
-using Test.Infrastructure.Data;
+using Ecom.Core.DTOS.Orders;
+using Ecom.Core.Entities.Order;
+using Ecom.Core.Interfaces;
+using Ecom.Core.Services;
+using Ecom.Infrastructure.Data;
 
-namespace Test.Infrastructure.Repositores.Services
+namespace Ecom.Infrastructure.Repositores.Services
 {
     public class OrderService : IOrderService
     {
@@ -29,7 +29,7 @@ namespace Test.Infrastructure.Repositores.Services
             _paymentService = paymentService;
         }
 
-        public async Task<ErrorOr<Orders>> CreateOrdersAsync(OrderDTO orderDTO, string BuyerEmail)
+        public async Task<ErrorOr<Orders>> CreateOrdersAsync(OrderDto orderDTO, string BuyerEmail)
         {
             // Get basket from redis
             var basket = await _unitOfWork.Baskets.GetBasketAsync(orderDTO.basketId);

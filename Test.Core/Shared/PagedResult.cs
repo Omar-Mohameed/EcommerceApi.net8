@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.Shared
+namespace Ecom.Core.Shared
 {
     public class PagedResult<T>
     {

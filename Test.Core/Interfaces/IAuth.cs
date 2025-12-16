@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.DTOS.AuthDTOS;
-using Test.Core.Entities;
+using Ecom.Core.DTOS.AuthDTOS;
+using Ecom.Core.Entities;
 
-namespace Test.Core.Interfaces
+namespace Ecom.Core.Interfaces
 {
     public interface IAuth
     {

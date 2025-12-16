@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Test.Core.Entities;
-using Test.Core.Services;
+using Ecom.Core.Entities;
+using Ecom.Core.Services;
 
-namespace Test.Api.Controllers
+namespace Ecom.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

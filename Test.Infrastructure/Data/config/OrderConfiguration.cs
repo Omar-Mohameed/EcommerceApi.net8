@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Entities.Order;
+using Ecom.Core.Entities.Order;
 
-namespace Test.Infrastructure.Data.config
+namespace Ecom.Infrastructure.Data.config
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Orders>
     {

@@ -6,10 +6,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Core.Interfaces;
-using Test.Infrastructure.Data;
+using Ecom.Core.Interfaces;
+using Ecom.Infrastructure.Data;
 
-namespace Test.Infrastructure.Repositores
+namespace Ecom.Infrastructure.Repositores
 {
     public class GenericRepo<T> : IGenericRepo<T> where T : class
     {

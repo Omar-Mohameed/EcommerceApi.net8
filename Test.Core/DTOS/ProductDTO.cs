@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Core.DTOS
+namespace Ecom.Core.DTOS
 {
     public record ProductDTO
     {

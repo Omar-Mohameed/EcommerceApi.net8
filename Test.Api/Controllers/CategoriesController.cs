@@ -3,12 +3,12 @@ using Azure.Core;
 using ErrorOr;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Test.Api.Helper;
-using Test.Core.DTOS;
-using Test.Core.Entities.Product;
-using Test.Core.Interfaces;
+using Ecom.Api.Helper;
+using Ecom.Core.DTOS;
+using Ecom.Core.Entities.Product;
+using Ecom.Core.Interfaces;
 
-namespace Test.Api.Controllers
+namespace Ecom.Api.Controllers
 {
     public class CategoriesController(IUnitOfWork work, IMapper mapper) : BaseController(work, mapper)
     {
