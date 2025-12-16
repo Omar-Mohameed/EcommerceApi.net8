@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.Interfaces
+namespace Test.Core.Interfaces
 {
     public interface IUnitOfWork
     {

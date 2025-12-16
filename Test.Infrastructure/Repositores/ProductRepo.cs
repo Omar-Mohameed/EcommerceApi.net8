@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.DTOS;
-using Ecom.Core.Entities.Product;
-using Ecom.Core.Interfaces;
-using Ecom.Core.Services;
-using Ecom.Core.Services.Errors;
-using Ecom.Core.Shared;
-using Ecom.Infrastructure.Data;
-using Ecom.Infrastructure.Repositores.Services;
+using Test.Core.DTOS;
+using Test.Core.Entities.Product;
+using Test.Core.Interfaces;
+using Test.Core.Services;
+using Test.Core.Services.Errors;
+using Test.Core.Shared;
+using Test.Infrastructure.Data;
+using Test.Infrastructure.Repositores.Services;
 
-namespace Ecom.Infrastructure.Repositores
+namespace Test.Infrastructure.Repositores
 {
     public class ProductRepo : GenericRepo<Product>, IProductRepo
     {

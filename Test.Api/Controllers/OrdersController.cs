@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Ecom.Api.Helper;
-using Ecom.Core.DTOS.Orders;
-using Ecom.Core.Entities.Order;
-using Ecom.Core.Services;
+using Test.Api.Helper;
+using Test.Core.DTOS.Orders;
+using Test.Core.Entities.Order;
+using Test.Core.Services;
+using Test.Infrastructure.Repositores.Services;
 
-namespace Ecom.Api.Controllers
+namespace Test.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,7 +19,7 @@ namespace Ecom.Api.Controllers
         private readonly IOrderService _orderService = orderService;
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder(OrderDto orderDTO)
+        public async Task<IActionResult> CreateOrder(OrderDTO orderDTO)
         {
             var Email = User.FindFirst(ClaimTypes.Email).Value;
             var result = await _orderService.CreateOrdersAsync(orderDTO,Email);

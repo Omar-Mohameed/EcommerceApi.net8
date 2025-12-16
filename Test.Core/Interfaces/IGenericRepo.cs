@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.Interfaces
+namespace Test.Core.Interfaces
 {
     public interface IGenericRepo<T> where T : class
     { //CRUD operations

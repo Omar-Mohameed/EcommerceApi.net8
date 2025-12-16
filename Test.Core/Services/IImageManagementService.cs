@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.Services
+namespace Test.Core.Services
 {
     public interface IImageManagementService
     {

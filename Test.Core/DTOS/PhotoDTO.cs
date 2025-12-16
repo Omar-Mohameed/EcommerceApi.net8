@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.DTOS
+namespace Test.Core.DTOS
 {
     public class PhotoDTO
     {

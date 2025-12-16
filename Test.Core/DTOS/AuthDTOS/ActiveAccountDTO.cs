@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.DTOS.AuthDTOS
+namespace Test.Core.DTOS.AuthDTOS
 {
     public record ActiveAccountDTO
     {

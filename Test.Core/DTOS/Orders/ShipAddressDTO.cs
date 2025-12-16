@@ -1,4 +1,4 @@
-﻿namespace Ecom.Core.DTOS.Orders
+﻿namespace Test.Core.DTOS.Orders
 {
     public record ShipAddressDTO
     {

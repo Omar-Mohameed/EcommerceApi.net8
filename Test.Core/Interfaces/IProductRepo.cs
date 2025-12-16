@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.DTOS;
-using Ecom.Core.Entities.Product;
-using Ecom.Core.Shared;
+using Test.Core.DTOS;
+using Test.Core.Entities.Product;
+using Test.Core.Shared;
 
-namespace Ecom.Core.Interfaces
+namespace Test.Core.Interfaces
 {
     public interface IProductRepo : IGenericRepo<Product>
     {

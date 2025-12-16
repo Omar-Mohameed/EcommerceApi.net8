@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Ecom.Infrastructure.Data;
+using Test.Infrastructure.Data;
 
 #nullable disable
 
-namespace Ecom.Infrastructure.Migrations
+namespace Test.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20251202121945_Order_Tables")]

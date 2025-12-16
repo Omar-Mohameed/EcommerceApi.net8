@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities;
-using Ecom.Core.Interfaces;
-using Ecom.Core.Services;
-using Ecom.Core.Shared;
-using Ecom.Infrastructure.Data;
+using Test.Core.Entities;
+using Test.Core.Interfaces;
+using Test.Core.Services;
+using Test.Core.Shared;
+using Test.Infrastructure.Data;
 
-namespace Ecom.Infrastructure.Repositores.Services
+namespace Test.Infrastructure.Repositores.Services
 {
     public class PaymentService : IPaymentService
     {

@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Services;
+using Test.Core.Services;
 
-namespace Ecom.Infrastructure.Repositores.Services
+namespace Test.Infrastructure.Repositores.Services
 {
     public class ImageManagementService : IImageManagementService
     {

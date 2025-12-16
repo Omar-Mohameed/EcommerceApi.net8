@@ -7,10 +7,10 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.DTOS.AuthDTOS;
-using Ecom.Core.Services;
+using Test.Core.DTOS.AuthDTOS;
+using Test.Core.Services;
 
-namespace Ecom.Infrastructure.Repositores.Services
+namespace Test.Infrastructure.Repositores.Services
 {
     public class EmailService : IEmailService
     {

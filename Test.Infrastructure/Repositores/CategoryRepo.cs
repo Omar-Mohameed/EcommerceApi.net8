@@ -6,12 +6,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities.Product;
-using Ecom.Core.Interfaces;
-using Ecom.Core.Services.Errors;
-using Ecom.Infrastructure.Data;
+using Test.Core.Entities.Product;
+using Test.Core.Interfaces;
+using Test.Core.Services.Errors;
+using Test.Infrastructure.Data;
 
-namespace Ecom.Infrastructure.Repositores
+namespace Test.Infrastructure.Repositores
 {
     public class CategoryRepo : GenericRepo<Category>, ICategoryRepo
     {

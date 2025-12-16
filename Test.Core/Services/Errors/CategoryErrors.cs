@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.Services.Errors
+namespace Test.Core.Services.Errors
 {
     public static class CategoryErrors
     {

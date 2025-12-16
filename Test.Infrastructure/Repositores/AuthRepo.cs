@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Ecom.Core.DTOS.AuthDTOS;
-using Ecom.Core.Entities;
-using Ecom.Core.Interfaces;
-using Ecom.Core.Services;
-using Ecom.Core.Shared;
-using Ecom.Infrastructure.Data;
+using Test.Core.DTOS.AuthDTOS;
+using Test.Core.Entities;
+using Test.Core.Interfaces;
+using Test.Core.Services;
+using Test.Core.Shared;
+using Test.Infrastructure.Data;
 
-namespace Ecom.Infrastructure.Repositores
+namespace Test.Infrastructure.Repositores
 {
     public class AuthRepo : IAuth
     {

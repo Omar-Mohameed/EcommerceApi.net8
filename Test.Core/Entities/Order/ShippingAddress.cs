@@ -1,4 +1,4 @@
-﻿namespace Ecom.Core.Entities.Order
+﻿namespace Test.Core.Entities.Order
 {
     public class ShippingAddress : BaseEntity<int>
     {

@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Ecom.Api.Helper;
-using Ecom.Core.DTOS;
-using Ecom.Core.Entities.Product;
-using Ecom.Core.Interfaces;
+using Test.Api.Helper;
+using Test.Core.DTOS;
+using Test.Core.Entities.Product;
+using Test.Core.Interfaces;
+using Test.Infrastructure.Repositores;
 
-namespace Ecom.Api.Controllers
+namespace Test.Api.Controllers
 {
     public class ProductsController : BaseController
     {

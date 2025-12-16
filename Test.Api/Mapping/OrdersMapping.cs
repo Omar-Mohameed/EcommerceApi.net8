@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Ecom.Core.DTOS.Orders;
-using Ecom.Core.Entities;
-using Ecom.Core.Entities.Order;
+using Test.Core.DTOS.Orders;
+using Test.Core.Entities;
+using Test.Core.Entities.Order;
 
-namespace Ecom.Api.Mapping
+namespace Test.Api.Mapping
 {
     public class OrdersMapping : Profile
     {

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities;
-using Ecom.Core.Interfaces;
-using Ecom.Core.Services;
-using Ecom.Infrastructure.Data;
-using Ecom.Infrastructure.Repositores.Services;
+using Test.Core.Entities;
+using Test.Core.Interfaces;
+using Test.Core.Services;
+using Test.Infrastructure.Data;
+using Test.Infrastructure.Repositores.Services;
 
-namespace Ecom.Infrastructure.Repositores
+namespace Test.Infrastructure.Repositores
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecom.Core.Entities
+namespace Test.Core.Entities
 {
     public class BaseEntity<T>
     {

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Ecom.Core.Interfaces;
+using Test.Core.Interfaces;
 
-namespace Ecom.Api.Controllers
+namespace Test.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

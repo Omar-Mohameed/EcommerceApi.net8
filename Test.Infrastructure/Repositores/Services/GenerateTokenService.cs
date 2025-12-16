@@ -7,10 +7,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities;
-using Ecom.Core.Services;
+using Test.Core.Entities;
+using Test.Core.Services;
 
-namespace Ecom.Infrastructure.Repositores.Services
+namespace Test.Infrastructure.Repositores.Services
 {
     public class GenerateTokenService : IGenerateTokenService
     {

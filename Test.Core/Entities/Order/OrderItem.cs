@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Ecom.Core.Entities.Order
+namespace Test.Core.Entities.Order
 {
     public class OrderItem : BaseEntity<int>
     {

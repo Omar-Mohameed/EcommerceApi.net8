@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities.Order;
+using Test.Core.Entities.Order;
 
-namespace Ecom.Core.DTOS.Orders
+namespace Test.Core.DTOS.Orders
 {
     public record OrderReturnDto
     {

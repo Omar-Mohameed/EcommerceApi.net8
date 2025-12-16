@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Ecom.Core.Entities;
-using Ecom.Core.Interfaces;
+using Test.Core.Entities;
+using Test.Core.Interfaces;
 
-namespace Ecom.Infrastructure.Repositores
+namespace Test.Infrastructure.Repositores
 {
     public class CustomerBasketRepo : ICustomerBasketRepo
     {

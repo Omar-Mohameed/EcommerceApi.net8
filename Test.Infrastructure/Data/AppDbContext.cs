@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ecom.Core.Entities;
-using Ecom.Core.Entities.Order;
-using Ecom.Core.Entities.Product;
+using Test.Core.Entities;
+using Test.Core.Entities.Order;
+using Test.Core.Entities.Product;
 
-namespace Ecom.Infrastructure.Data
+namespace Test.Infrastructure.Data
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
